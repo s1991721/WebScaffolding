@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SimpleProducerTest {
 
     @Autowired
-    private Producer producer;
+    private SimpleProducer producer;
 
     @Test
     public void sendDirectMsg() {
