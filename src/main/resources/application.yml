@@ -7,3 +7,6 @@ spring:
     listener:
       simple:
         prefetch: 1 #最大接收数 Qos 只适用于Direct交换机
+        acknowledge-mode: manual  #简答分发的默认directExchange，否则routingProducer不生效
+      direct: # 仅针对自定义的directExchange
+        acknowledge-mode: manual #手动确认接收
