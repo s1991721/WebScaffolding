@@ -11,9 +11,9 @@ spring:
       direct: # 仅针对自定义的directExchange
         acknowledge-mode: manual #手动确认接收
   redis:
-    port:
-    host:
-    password:
+    port: 6379
+    host: 192.168.3.100
+    password: 123456
     lettuce:
       pool:
         max-active: 8        #连接池最大链接数默认值为8

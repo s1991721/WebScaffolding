@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
-    //生成key
+    //生成key,不用手动在@Cacheable中设置key
     @Bean
     public KeyGenerator keyGenerator() {
         return (target, method, params) -> {
