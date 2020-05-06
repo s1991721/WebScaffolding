@@ -1,6 +1,9 @@
 package com.ljf.web_scaffolding.controllers;
 
 import com.ljf.web_scaffolding.entity.User;
+import com.ljf.web_scaffolding.enums.ResultEnum;
+import com.ljf.web_scaffolding.utils.ResultUtil;
+import com.ljf.web_scaffolding.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cache.annotation.Cacheable;
@@ -19,16 +22,16 @@ public class UserInfoController {
     @ApiOperation(value = "接口名", notes = "接口描述")
     @PostMapping("/user/login")
     @Cacheable(value = {"user", "animal"})  //cacheNames区分不同的cache空间，可设置数组
-    public User login(@RequestParam("姓名") String name) {                   // ；缓存对象必须序列化
+    public ResultVo<User> login(@RequestParam("姓名") String name) {                   // ；缓存对象必须序列化
         User user = new User();
         user.setName(name);
         user.setSex(111);
-        return user;
+        return ResultUtil.success(user);
     }
 
     @PostMapping("/logout")
-    public String logout(@RequestBody User user) {
-        return "success";
+    public ResultVo logout(@RequestBody User user) {
+        return ResultUtil.resultVoFromEnum(ResultEnum.SUCCESS);
     }
 
 }
