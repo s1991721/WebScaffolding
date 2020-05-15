@@ -19,7 +19,8 @@ CREATE TABLE `t_scaffolding_account`
     `update_time` DATETIME     NOT NULL COMMENT '更新时间',
     `operator_id` VARCHAR(255) NOT NULL COMMENT '操作人ID',
     `deleted`     TINYINT      NOT NULL DEFAULT '0', -- 0：未删除 1：删除
-    PRIMARY KEY (`t_id`)
+    PRIMARY KEY (`t_id`),
+    UNIQUE KEY (`account`)
 ) ENGINE = INNODB
   DEFAULT CHARSET = utf8;
 
