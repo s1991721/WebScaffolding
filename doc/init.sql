@@ -7,13 +7,14 @@ CREATE DATABASE `scaffolding`
 USE `scaffolding`;
 
 DROP TABLE
-    IF EXISTS `t_scaffolding_account`; -- t_项目名_模块_表名
+    IF EXISTS `t_scaffolding_user`; -- t_项目名_模块_表名
 
-CREATE TABLE `t_scaffolding_account`
+CREATE TABLE `t_scaffolding_user`
 (
     `t_id`        BIGINT       NOT NULL AUTO_INCREMENT COMMENT '主键',
     `account`     VARCHAR(255) NOT NULL COMMENT '账号',
     `password`    VARCHAR(255) NOT NULL COMMENT '密码',
+    `name`        VARCHAR(255) NOT NULL COMMENT '用户名',
     -- 公共字段 --
     `create_time` DATETIME     NOT NULL COMMENT '创建时间',
     `update_time` DATETIME     NOT NULL COMMENT '更新时间',
@@ -24,5 +25,5 @@ CREATE TABLE `t_scaffolding_account`
 ) ENGINE = INNODB
   DEFAULT CHARSET = utf8;
 
-INSERT INTO t_scaffolding_account (account, password, create_time, update_time, operator_id)
-VALUES ('admin', 'admin', NOW(), NOW(), 0)
+INSERT INTO t_scaffolding_user (account, password, name, create_time, update_time, operator_id)
+VALUES ('admin', 'admin', 'Jef', NOW(), NOW(), 0)
