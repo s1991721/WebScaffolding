@@ -1,6 +1,6 @@
 package com.ljf.web_scaffolding.controllers;
 
-import com.ljf.web_scaffolding.entity.User;
+import com.ljf.web_scaffolding.entity.UserInfo;
 import com.ljf.web_scaffolding.enums.ResultEnum;
 import com.ljf.web_scaffolding.utils.ResultUtil;
 import com.ljf.web_scaffolding.vo.ResultVo;
@@ -15,22 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by mr.lin on 2020/4/27
  */
-@Api(value = "user", tags = "显示名")
-@RestController("/user")
+@Api(value = "userInfo", tags = "显示名")
+@RestController("/userInfo")
 public class UserInfoController {
 
     @ApiOperation(value = "接口名", notes = "接口描述")
-    @PostMapping("/user/login")
-    @Cacheable(value = {"user", "animal"})  //cacheNames区分不同的cache空间，可设置数组
-    public ResultVo<User> login(@RequestParam("姓名") String name) {                   // ；缓存对象必须序列化
-        User user = new User();
-        user.setName(name);
-        user.setSex(111);
-        return ResultUtil.success(user);
+    @PostMapping("/userInfo/login")
+    @Cacheable(value = {"userInfo", "animal"})  //cacheNames区分不同的cache空间，可设置数组
+    public ResultVo<UserInfo> login(@RequestParam("姓名") String name) {                   // ；缓存对象必须序列化
+        UserInfo userInfo = new UserInfo();
+        userInfo.setName(name);
+        userInfo.setSex(111);
+        return ResultUtil.success(userInfo);
     }
 
     @PostMapping("/logout")
-    public ResultVo logout(@RequestBody User user) {
+    @Cacheable(cacheNames = "product", key = "123")
+    public ResultVo logout(@RequestBody UserInfo userInfo) {
         return ResultUtil.resultVoFromEnum(ResultEnum.SUCCESS);
     }
 

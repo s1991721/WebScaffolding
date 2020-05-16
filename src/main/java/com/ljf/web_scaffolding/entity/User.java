@@ -1,22 +1,67 @@
 package com.ljf.web_scaffolding.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
 import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 /**
- * Created by mr.lin on 2020/4/27
+ * <p>
+ *
+ * </p>
+ *
+ * @author Jef
+ * @since 2020-05-15
  */
-@ApiModel(value = "用户实体类", description = "描述信息")
 @Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("t_scaffolding_user")
 public class User implements Serializable {
 
-    @ApiModelProperty(value = "用户名")
-    public String name;
+    private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "性别", allowableValues = "1,0")
-    public Integer sex;
+    /**
+     * 主键
+     */
+    @TableId(value = "t_id", type = IdType.AUTO)
+    private Long tId;
+
+    /**
+     * 账号
+     */
+    private String account;
+
+    /**
+     * 密码
+     */
+    private String password;
+
+    /**
+     * 用户名
+     */
+    private String name;
+
+    /**
+     * 创建时间
+     */
+    private LocalDateTime createTime;
+
+    /**
+     * 更新时间
+     */
+    private LocalDateTime updateTime;
+
+    /**
+     * 操作人ID
+     */
+    private String operatorId;
+
+    private Integer deleted;
+
 
 }

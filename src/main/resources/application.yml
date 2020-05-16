@@ -1,19 +1,25 @@
 spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/scaffolding?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimeZone=GMT%2B8
+    username: root
+    password: 123456
   rabbitmq:
-    host: 192.168.3.133
+    host: 127.0.0.1
     port: 5672
-    password: guest
-    username: guest
+    password: admin
+    username: admin
     listener:
       simple:
         prefetch: 1 #最大接收数 Qos 只适用于Direct交换机
         acknowledge-mode: manual  #简答分发的默认directExchange，否则routingProducer不生效
       direct: # 仅针对自定义的directExchange
         acknowledge-mode: manual #手动确认接收
+    virtual-host: my_vhost #docker 中设置了virtual-host
   redis:
     port: 6379
-    host: 192.168.3.100
-    password: 123456
+    host: 127.0.0.1
+#    password: 123456
     lettuce:
       pool:
         max-active: 8        #连接池最大链接数默认值为8

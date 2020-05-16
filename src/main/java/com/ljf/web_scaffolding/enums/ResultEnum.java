@@ -11,7 +11,8 @@ public enum ResultEnum {
 
     SUCCESS(0,"成功"),
     LOGIN_FAIL(1, "登录失败"),
-    ROLE_ERROR(2, "角色权限有误"),
+    ACCOUNT_EXIST(2, "账号已存在"),
+    ROLE_ERROR(3, "角色权限有误"),
     ;
 
     private Integer code;
