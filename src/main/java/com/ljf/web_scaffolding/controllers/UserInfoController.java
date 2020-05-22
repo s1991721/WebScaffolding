@@ -21,8 +21,8 @@ public class UserInfoController {
 
     @ApiOperation(value = "接口名", notes = "接口描述")
     @PostMapping("/userInfo/login")
-    @Cacheable(value = {"userInfo", "animal"})  //cacheNames区分不同的cache空间，可设置数组
-    public ResultVo<UserInfo> login(@RequestParam("姓名") String name) {                   // ；缓存对象必须序列化
+//    @Cacheable(value = {"userInfo", "animal"})  //cacheNames区分不同的cache空间，可设置数组
+    public ResultVo login(@RequestParam("name") String name) {                   // ；缓存对象必须序列化
         UserInfo userInfo = new UserInfo();
         userInfo.setName(name);
         userInfo.setSex(111);
@@ -30,7 +30,7 @@ public class UserInfoController {
     }
 
     @PostMapping("/logout")
-    @Cacheable(cacheNames = "product", key = "123")
+//    @Cacheable(cacheNames = "product", key = "123")
     public ResultVo logout(@RequestBody UserInfo userInfo) {
         return ResultUtil.resultVoFromEnum(ResultEnum.SUCCESS);
     }
