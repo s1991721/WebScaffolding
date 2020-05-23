@@ -13,6 +13,7 @@ public enum ResultEnum {
     LOGIN_FAIL(1, "登录失败"),
     ACCOUNT_EXIST(2, "账号已存在"),
     ROLE_ERROR(3, "角色权限有误"),
+    BUSINESS_EXCEPTION(999, "业务处理异常"),
     ;
 
     private Integer code;
