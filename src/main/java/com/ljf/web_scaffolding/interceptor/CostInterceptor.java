@@ -25,9 +25,11 @@ public class CostInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        Long startTime = (Long) request.getAttribute("startTime");
-        HandlerMethod handlerMethod = (HandlerMethod) handler;
-        log.info("{}{} 耗时：{}", handlerMethod.getBean().getClass().getName(), handlerMethod.getMethod().getName(), System.currentTimeMillis() - startTime);
+        if (HandlerMethod.class.isAssignableFrom(handler.getClass())) {
+            Long startTime = (Long) request.getAttribute("startTime");
+            HandlerMethod handlerMethod = (HandlerMethod) handler;
+            log.info("{}{} 耗时：{}", handlerMethod.getBean().getClass().getName(), handlerMethod.getMethod().getName(), System.currentTimeMillis() - startTime);
+        }
     }
 
     @Override

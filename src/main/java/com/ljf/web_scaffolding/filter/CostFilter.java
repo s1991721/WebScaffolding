@@ -18,8 +18,6 @@ public class CostFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         long start = System.currentTimeMillis();
         chain.doFilter(request, response);
-        // TODO: 2020/5/23 输出接口名 
-        log.info("cost time:{}ms", System.currentTimeMillis() - start);
     }
 
 }
