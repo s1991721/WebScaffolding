@@ -14,3 +14,6 @@ token 生成器
 拦截器、过滤器 用以全局token锁定用户
 权限
 日志系统
+ftp
+异步扩容线程 callable DefferredResult
+
