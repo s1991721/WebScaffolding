@@ -26,8 +26,8 @@ public class XssFilter implements Filter {
         chain.doFilter(xssAndSqlHttpServletRequestWrapper,servletResponse);
     }
 
-    @Bean
-    @Primary
+//    @Bean
+//    @Primary 影响全局返回格式，swagger
     public ObjectMapper xssObjectMapper(Jackson2ObjectMapperBuilder builder)
     {
         //解析器
