@@ -42,6 +42,7 @@ public class PreTreeSensitiveWordAOP {
                 return obj;
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
+                return null;//如果不返回，则会999错误
             }
         }
         log.info("审查不通过 cost:{}", System.currentTimeMillis() - start);
