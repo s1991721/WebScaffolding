@@ -1,14 +1,13 @@
 package com.ljf.web_scaffolding.aop;
 
 import com.google.gson.Gson;
+import com.ljf.web_scaffolding.enums.ResultEnum;
 import com.ljf.web_scaffolding.utils.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 
 import java.io.*;
@@ -42,7 +41,7 @@ public class PreTreeSensitiveWordAOP {
                 return obj;
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
-                return null;//如果不返回，则会999错误
+                return ResultUtil.resultVoFromEnum(ResultEnum.BUSINESS_EXCEPTION);//如果不返回，则会999错误
             }
         }
         log.info("审查不通过 cost:{}", System.currentTimeMillis() - start);
